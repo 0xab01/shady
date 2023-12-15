@@ -1,90 +1,63 @@
-// Login.tsx
-import React from 'react';
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import "@/App.css";
-import "@/index.css";
-import { ModeToggle } from "@/components/ui/mode-toggle"; // Adjust the import path
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { useNavigate } from 'react-router-dom';
 
-interface LoginProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-const Login: React.FC<LoginProps> = ({ className, ...props }) => {
-  const [email, setEmail] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-
-  async function onSubmit(event: React.SyntheticEvent) {
-    event.preventDefault();
-    setIsLoading(true);
-
-    // Simulating an asynchronous operation (e.g., API call)
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }
-
+export default function LoginAccount() {
+    const navigate = useNavigate();
+    const handleLogin = () => {
+      // Here you would typically add your login logic
+      // For now, let's just navigate to the MainPage on button click
+      navigate('/chat');
+    };
   return (
-    <div className={cn("flex items-center justify-center h-screen", className)} {...props}>
-      <div className={cn("grid gap-6", "sm:w-1/2", className)}>
-        {/* Theme toggle button */}
-        <ModeToggle />
-
-        <form onSubmit={onSubmit} className="bg-white p-8 rounded shadow-md">
-          <div className="grid gap-2">
-            {/* Your form inputs and buttons go here */}
-            <div className="grid gap-1">
-              <Label className="sr-only" htmlFor="email">
-                Email
-              </Label>
-              <Input
-                id="email"
-                placeholder="Email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoCapitalize="none"
-                autoComplete="email"
-                autoCorrect="off"
-                disabled={isLoading}
-              />
+    <div className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden">
+      <div className="w-full m-auto lg:max-w-lg">
+        <Card>
+          <CardHeader className="space-y-1">
+            <CardTitle className="text-2xl text-center">Sign in</CardTitle>
+            <CardDescription className="text-center">
+              Enter your email and password to login
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" type="email" placeholder="" />
             </div>
-            <div className="grid gap-1">
-              <Label className="sr-only" htmlFor="password">
-                Password
-              </Label>
-              <Input
-                id="password"
-                placeholder="Password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
-                disabled={isLoading}
-              />
+            <div className="grid gap-2">
+              <Label htmlFor="password">Password</Label>
+              <Input id="password" type="password" />
             </div>
-            <Button disabled={isLoading}>
-              Sign In with Email
-            </Button>
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">
-                  Or continue with
-                </span>
-              </div>
+            <div className="flex items-center space-x-2">
+              <Checkbox id="terms" />
+              <label
+                htmlFor="terms"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Remember me
+              </label>
             </div>
-            <Button variant="outline" type="button" disabled={isLoading}>
-              Github
-            </Button>
-          </div>
-        </form>
+          </CardContent>
+          <CardFooter className="flex flex-col">
+          <Button className="w-full" onClick={handleLogin}>Login</Button>
+            <p className="mt-2 text-xs text-center text-gray-700">
+              {" "}
+              Don't have an account?{" "}
+              <span className=" text-blue-600 hover:underline">Sign up</span>
+            </p>
+          </CardFooter>
+        </Card>
       </div>
     </div>
-  );
-};
-
-export default Login;
+  )
+}
