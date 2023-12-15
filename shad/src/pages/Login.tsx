@@ -4,8 +4,9 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import "@/App.css"
-import "@/index.css"
+import "@/App.css";
+import "@/index.css";
+import { ModeToggle } from "@/components/ui/mode-toggle"; // Adjust the import path
 
 interface LoginProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -27,8 +28,12 @@ const Login: React.FC<LoginProps> = ({ className, ...props }) => {
   return (
     <div className={cn("flex items-center justify-center h-screen", className)} {...props}>
       <div className={cn("grid gap-6", "sm:w-1/2", className)}>
+        {/* Theme toggle button */}
+        <ModeToggle />
+
         <form onSubmit={onSubmit} className="bg-white p-8 rounded shadow-md">
           <div className="grid gap-2">
+            {/* Your form inputs and buttons go here */}
             <div className="grid gap-1">
               <Label className="sr-only" htmlFor="email">
                 Email
