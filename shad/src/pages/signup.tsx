@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Login from '@/pages/Login';
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function Signup() {
   const handleSignup = () => {
     // Add your signup logic here
     // For now, let's just navigate to the home page
-    navigate('/login');
+    navigate('Login');
   };
 
   return (
