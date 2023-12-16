@@ -18,7 +18,7 @@ export default function LoginAccount() {
     const handleLogin = () => {
       // Here you would typically add your login logic
       // For now, let's just navigate to the MainPage on button click
-      navigate('/chat');
+      navigate('/dashboard');
     };
   return (
     <div className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden">
