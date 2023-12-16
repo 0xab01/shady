@@ -51,7 +51,7 @@ export default function Signup() {
             <p className="mt-2 text-xs text-center text-gray-700">
               Already have an account?{' '}
               {/* Link to navigate back to the login page */}
-              <Link to="/Login" className="text-blue-600 hover:underline">
+              <Link to="/login" className="text-blue-600 hover:underline">
               <span className=" text-blue-600 hover:underline">Log In</span>
               </Link>
             </p>

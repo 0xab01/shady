@@ -17,6 +17,7 @@ function App() {
             <Route path="/noob" element={<Mainpage onTabSelect={undefined} />} />
             <Route path="/chat" element={<DarkModeChatArea />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<LoginAccount />} />
             
            
           </Routes>
