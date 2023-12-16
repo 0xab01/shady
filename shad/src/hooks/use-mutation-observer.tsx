@@ -1,9 +1,17 @@
-// Import the correct module or create the file if needed
-// For example, assuming use-mutation-observer is a React hook
-import { useEffect } from 'react';
+// @/hooks/use-mutation-observer.tsx
+import { useEffect, RefObject } from 'react';
 
-function useMutationObserver() {
-  // Implementation...
+function useMutationObserver(target: RefObject<Node>, callback: MutationCallback, options?: MutationObserverInit) {
+  useEffect(() => {
+    if (!target.current) return;
+
+    const observer = new MutationObserver(callback);
+    observer.observe(target.current, options);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [target, callback, options]);
 }
 
 export default useMutationObserver;

@@ -1,4 +1,7 @@
-import { Button } from "@/components/ui/button"
+// Login.tsx
+
+import { useHistory } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -6,20 +9,21 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useNavigate } from 'react-router-dom';
+} from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { Link } from 'react-router-dom';
 
 export default function LoginAccount() {
-    const navigate = useNavigate();
-    const handleLogin = () => {
-      // Here you would typically add your login logic
-      // For now, let's just navigate to the MainPage on button click
-      navigate('/dashboard');
-    };
+  const history = useHistory();
+
+  const handleLogin = () => {
+    // Here you would typically add your login logic
+    // For now, let's just navigate to the /dashboard route on button click
+    history.push('/dashboard');
+  };
+
   return (
     <div className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden">
       <div className="w-full m-auto lg:max-w-lg">
@@ -50,18 +54,18 @@ export default function LoginAccount() {
             </div>
           </CardContent>
           <CardFooter className="flex flex-col">
-          <Button className="w-full" onClick={handleLogin}>Login</Button>
+            <Button className="w-full" onClick={handleLogin}>
+              Login
+            </Button>
             <p className="mt-2 text-xs text-center text-gray-700">
-              {" "}
-              Don't have an account?{" "}
+              Don't have an account?{' '}
               <Link to="/signup" className="text-blue-600 hover:underline">
-              <span className=" text-blue-600 hover:underline">Sign up</span>
+                <span className="text-blue-600 hover:underline">Sign up</span>
               </Link>
-              
             </p>
           </CardFooter>
         </Card>
       </div>
     </div>
-  )
+  );
 }

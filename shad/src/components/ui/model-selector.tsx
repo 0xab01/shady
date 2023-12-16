@@ -5,7 +5,12 @@ import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
 
 import { cn } from "@/lib/utils"
-import { useMutationObserver } from "@/hooks/use-mutation-observer"
+// Example usage in another file
+import useMutationObserver from '@/hooks/use-mutation-observer';
+
+// ... rest of the component
+
+
 import { Button } from "@/components/ui/button"
 import {
   Command,
