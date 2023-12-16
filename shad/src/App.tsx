@@ -1,11 +1,12 @@
-
-import { ThemeProvider } from "@/components/ui/theme-provider";
-import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Import Route from react-router-dom
+import React from 'react';
+import { ThemeProvider } from '@/components/ui/theme-provider';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginAccount from '@/pages/Login';
 
-import { ModeToggle } from "./components/ui/mode-toggle";
-import Signup  from '@/pages/signup';
-import DashboardPage from '@/pages/dashboard';
+import { ModeToggle } from './components/ui/mode-toggle';
+import Signup from '@/pages/signup';
+
+import Playground from '@/pages/dashboard';
 
 function App() {
   return (
@@ -15,12 +16,10 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LoginAccount />} />
-     
-           <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<Playground />} />
+        
+            <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<LoginAccount />} />
-           
-            
-           
           </Routes>
         </BrowserRouter>
       </div>
@@ -29,6 +28,3 @@ function App() {
 }
 
 export default App;
-
-
-
